@@ -24,7 +24,7 @@ public class GithubController : ControllerBase
     [HttpGet("{owner:required}/{repo:required}/contributors")]
     public async Task<IActionResult> GetContributors(string owner, string repo)
     {
-        var query = new ContributorsWithinPeriodQuery(owner, repo, 30);
+        var query = new ContributorsQuery(owner, repo, 30);
         var response = await _mediator.Send(query);
 
         return Ok(_mapper.Map<Contributor[]>(response));

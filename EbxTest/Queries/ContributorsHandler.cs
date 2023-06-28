@@ -4,17 +4,17 @@ using MediatR;
 
 namespace EbxTest.Queries;
 
-public class ContributorsWithinPeriodHandler : IRequestHandler<ContributorsWithinPeriodQuery, IEnumerable<Commit>>
+public class ContributorsHandler : IRequestHandler<ContributorsQuery, IEnumerable<Commit>>
 {
     private readonly IGithubClient _githubClient;
 
-    public ContributorsWithinPeriodHandler(IGithubClient githubClient)
+    public ContributorsHandler(IGithubClient githubClient)
     {
         _githubClient = githubClient;
     }
 
     public async Task<IEnumerable<Commit>> Handle(
-        ContributorsWithinPeriodQuery request,
+        ContributorsQuery request,
         CancellationToken cancellationToken)
     {
         var response = await _githubClient.GetCommits(request.Owner, request.Repo, request.ResultCount, 1);

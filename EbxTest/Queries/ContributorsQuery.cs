@@ -3,9 +3,9 @@ using MediatR;
 
 namespace EbxTest.Queries;
 
-public class ContributorsWithinPeriodQuery : IRequest<IEnumerable<Commit>>
+public class ContributorsQuery : IRequest<IEnumerable<Commit>>
 {
-    public ContributorsWithinPeriodQuery(string owner, string repo, int resultCount)
+    public ContributorsQuery(string owner, string repo, int resultCount)
     {
         Owner = owner;
         Repo = repo;
