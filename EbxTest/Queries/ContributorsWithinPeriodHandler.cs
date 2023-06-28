@@ -17,8 +17,7 @@ public class ContributorsWithinPeriodHandler : IRequestHandler<ContributorsWithi
         ContributorsWithinPeriodQuery request,
         CancellationToken cancellationToken)
     {
-        var since = DateTime.UtcNow.AddDays(-request.DaySpan);
-        var response = await _githubClient.GetCommits(request.Owner, request.Repo, 30, 1);
+        var response = await _githubClient.GetCommits(request.Owner, request.Repo, request.ResultCount, 1);
         
         return response.Select(c => c.Commit);
     }

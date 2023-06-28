@@ -5,16 +5,16 @@ namespace EbxTest.Queries;
 
 public class ContributorsWithinPeriodQuery : IRequest<IEnumerable<Commit>>
 {
-    public ContributorsWithinPeriodQuery(string owner, string repo, int daySpan)
+    public ContributorsWithinPeriodQuery(string owner, string repo, int resultCount)
     {
         Owner = owner;
         Repo = repo;
-        DaySpan = daySpan;
+        ResultCount = resultCount;
     }
     
     public string Owner { get; }
     
     public string Repo { get; }
 
-    public int DaySpan { get; }
+    public int ResultCount { get; }
 }
